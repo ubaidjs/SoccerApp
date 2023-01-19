@@ -65,7 +65,10 @@ const Match = (props: Props) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <SectionTitle text="Overview" style={{marginTop: 20}} />
+        <SectionTitle
+          text="Overview"
+          style={{marginTop: 20, marginBottom: 10}}
+        />
         <View style={styles.card}>
           <Text style={styles.date}>
             {dayjs(info.Date).format('MMM DD, YYYY  hh:mm A')}
@@ -118,7 +121,7 @@ const Match = (props: Props) => {
           <Text>{info.StageName[0]?.Description}</Text>
         </View>
 
-        <SectionTitle text="Stats" />
+        <SectionTitle text="Stats" style={{marginTop: 20, marginBottom: 10}} />
         <View style={styles.card}>
           <StatItem
             home={`${parseInt(liveData?.BallPossession.OverallHome || 0, 10)}%`}

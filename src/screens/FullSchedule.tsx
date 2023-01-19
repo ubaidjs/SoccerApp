@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
-import Text from '../components/Text';
+import {StyleSheet, View} from 'react-native';
+// import Text from '../components/Text';
 import colors from '../theme/colors';
 import GameCard from '../components/GameCard';
 import SectionTitle from '../components/SectionTitle';
 import {GameInfoObj} from '../interface/GameInfo';
+import {FlashList} from '@shopify/flash-list';
 
 const FullSchedule = () => {
   const [matches, setMatches] = useState<GameInfoObj[]>([]);
@@ -35,11 +36,11 @@ const FullSchedule = () => {
 
   return (
     <View style={styles.container}>
-      <SectionTitle text="All Events" />
-      <FlatList
+      <SectionTitle text="All Events" style={{marginTop: 20}} />
+      <FlashList
         data={matches}
-        keyExtractor={(item, index) => index.toString()}
         renderItem={_renderItem}
+        estimatedItemSize={200}
         onRefresh={fetchMatches}
         refreshing={false}
       />
